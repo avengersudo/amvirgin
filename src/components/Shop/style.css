@@ -1,0 +1,13 @@
+.shopToday, .shopMain, .shopFocus, .shopMiddle, .shopSubmenu{
+    background:#fff;
+}
+.slidervideo{
+    margin: 0 auto !important;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+}
+
+.logoheader {
+    height: 49px;
+}
