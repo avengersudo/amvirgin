@@ -1,0 +1,37 @@
+.affix {
+    top: 0;
+    width: 100%;
+  }
+  .affix + .container-fluid {
+    padding-top: 70px;
+  }
+
+
+  .fluid__image-container div div:nth-child(3) {
+    z-index: 99999999;
+  }
+
+  .flexboximg{
+    display: flex;
+    width: 95%;
+  }
+
+  .flexpart{
+    flex: 1;
+    margin: 10px;
+  }
+
+  .flexpart img{
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .fluid__image-container div img{
+  width: 100%;
+}
+.sectionwhite {
+  margin-top: -50px;
+  background-color: #fff;
+  padding-top: 30px;
+}

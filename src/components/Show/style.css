@@ -1,3 +1,4 @@
+/*@import "../../../node_modules/video-react/dist/video-react.css";*/
 .read-more-button {
     margin-top: 5px;
     background: linear-gradient(to bottom, #c00 0%, #900 100%);
@@ -13,3 +14,4 @@
     text-transform: uppercase;
     width: 100px;
 }
+

@@ -7,7 +7,7 @@ import FocusBrand from './FocusBrand';
 import TodayDeal from './TodayDeal';
 import PopularStuff from './PopularStuff';
 import Trends from './Trends';
-import Footer from '../Footer';
+import Footer from './FooterWhite';
 import SubMenu from './Submenu';
 import { Link } from 'react-router-dom';
 import './style.css';

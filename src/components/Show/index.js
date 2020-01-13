@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext  } from 'react';
 import { Helmet } from "react-helmet";
 import Header from '../Header';
 import Footer from '../Footer';
@@ -6,19 +6,41 @@ import './style.css';
 import Trending from '../Home/Trending';
 import Slider from "react-slick";
 import ReadMoreReact from 'read-more-react';
+import Video from './Video';
+import Home from '../Home/Home';
+import {GetData} from '../../db.js';
 
 class Show extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            playVideo: false,
+            trending:''
         }
         this.episodeCredit = this.episodeCredit.bind(this);
+    }
+    componentDidMount(){
+        GetData('trending/picks').then(res=>{
+            if(res.status===200){
+                this.setState({trending: res.data.data.trendingPicks});
+              }else{
+                this.setState({trending: ''});
+              }
+        })
     }
     episodeCredit = () =>{
         this.setState(prevState => ({
             isOpen: !prevState.isOpen
           }));
+    }
+    play = () => {
+        this.refs.video.play();
+        this.setState({playVideo:!this.state.playVideo})
+    }
+    pause = () => {
+        this.refs.video.pause();
+        this.setState({playVideo:!this.state.playVideo})
     }
     render(){
         var settings = {
@@ -41,7 +63,12 @@ class Show extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div>
-                                    <img src="img/main1.jpg" alt="play" className="videoimage" />
+                                    {/* <img src="img/main1.jpg" alt="play" className="videoimage" /> */}
+                                    <Video
+                                        ref="video"
+                                        src='http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4'
+                                        poster="https://video-react.js.org/assets/poster.png"
+                                    />
                                 </div>
                                 <button className="watchlist"><i className="fa fa-bars"></i>Watchlist</button>
                                 <button className="watchlist"><i className="fa fa-share"></i>Share</button>
@@ -54,9 +81,15 @@ class Show extends Component {
                                         <button className="trailerbtn">
                                             <img src="img/playred.png" alt="play" className="play" />Trailer
                                         </button>
-                                        <button className="playbtn">
-                                            <img src="img/playwhite.png" alt="play" className="play" />Play
-                                        </button>
+                                        { this.state.playVideo===false ? 
+                                            <button className="playbtn" onClick={()=>this.play()}>
+                                                <i className="fa fa-play-circle"></i>Play
+                                            </button> :
+                                            <button className="playbtn" onClick={()=>this.pause()}>
+                                                <i className="fa fa-pause-circle"></i>Pause
+                                            </button>
+                                        }
+                                        
                                     </div>
                                     <hr className="videohr" />
                                     <div className="details row">
@@ -191,7 +224,15 @@ class Show extends Component {
                         }
                         
                     </div>
-                    <Trending />
+                    <Trending 
+                        dots={false} 
+                        arrows={true} 
+                        infinite={false} 
+                        speed={500} 
+                        slidesToShow={2.2} 
+                        slidesToScroll={1}
+                        trendingData={this.state.trending}
+                    />
                 </div>
                 <Footer />
             </>

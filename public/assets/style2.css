@@ -4166,4 +4166,29 @@ overflow: hidden;
 .loginbody{
 	background-image: url('../img/bgdemo1.jpg');
 	width: 100%;
-  }
+}
+
+.video-react-icon-replay-15 .video-react-control-text{
+	font-size: 0px!important;
+	clip: inherit!important;
+	position: relative!important;
+}
+.video-react-icon-replay-15 .video-react-control-text::before{
+	content: '';
+	font-size: 18px!important;
+}
+
+
+
+.video-react-icon-forward-15 .video-react-control-text{
+	font-size: 0px!important;
+	clip: inherit!important;
+	position: relative!important;
+}
+
+.video-react-icon-forward-15 .video-react-control-text::before{
+	content: '';
+	font-size: 18px!important;
+}
+
+  

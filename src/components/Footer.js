@@ -4,26 +4,26 @@ class Footer extends Component {
     render(){
         return(
             <footer className="specific" >
-                <div className="footer" style={{marginTop: '233px'}}>
+                <div className="footer" style={{marginTop: '2px'}}>
                     <div className="row">
                         <div className="col-md-9">
                             <div className="row">
                                 <div className="col-md-4 footerline">
-                                    <ul><h4>Legal</h4>
+                                    <ul style={{padding:'inherit'}}><h4 style={{color:'#fff'}}>Legal</h4>
                                         <li>Privacy Policy</li>
                                         <li>Refund Policy</li>
                                         <li>Terms & Conditions</li>
                                     </ul>
                                 </div>
                                 <div className="col-md-4 footerline">
-                                    <ul><h4>Customer</h4>
+                                    <ul style={{padding:'inherit'}}><h4 style={{color:'#fff'}}>Customer</h4>
                                         <li>My Account</li>
                                         <li>Login</li>
                                         <li>Register</li>
                                     </ul>
                                 </div>
                                 <div className="col-md-4 footerline">
-                                    <ul><h4>Connect</h4>
+                                    <ul style={{padding:'inherit'}}><h4 style={{color:'#fff'}}>Connect</h4>
                                         <li>Contact</li>
                                     </ul>
                                 </div>

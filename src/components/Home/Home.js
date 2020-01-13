@@ -15,9 +15,12 @@ class Home extends Component {
         this.state = {
             sliders: [],
             trending: [],
+            justAdded:[],
+            topPicks:[]
         }
     }
     componentDidMount(){
+        //Get data for Top sliders
         GetData('sliders').then(res=>{
             if(res.status===200){
                 this.setState({sliders: res.data.data});
@@ -25,16 +28,21 @@ class Home extends Component {
                 this.setState({sliders: ''});
               }
         })
+        //Get data for bottom sliders
         GetData('trending/picks').then(res=>{
             if(res.status===200){
-                this.setState({trending: res.data.data});
+                //console.log(res.data.data);
+                this.setState({trending: res.data.data.trendingPicks});
+                this.setState({justAdded: res.data.data.justAdded});
+                this.setState({topPicks: res.data.data.topPicks});
               }else{
                 this.setState({trending: ''});
+                this.setState({justAdded: ''});
+                this.setState({topPicks: ''});
               }
         })
     }
     render(){
-        //console.log(this.props);
         return(
             <>
                 <Helmet>
@@ -58,7 +66,8 @@ class Home extends Component {
                             infinite={false} 
                             speed={500} 
                             slidesToShow={5.5} 
-                            slidesToScroll={1} 
+                            slidesToScroll={1}
+                            topPicsData={this.state.topPicks}
                         />
                         <Shop
                             dots={false} 
@@ -75,6 +84,7 @@ class Home extends Component {
                             speed={500} 
                             slidesToShow={5.5} 
                             slidesToScroll={1} 
+                            justAddedData={this.state.justAdded}
                         />
                         <Trending 
                             dots={false} 
@@ -82,7 +92,8 @@ class Home extends Component {
                             infinite={false} 
                             speed={500} 
                             slidesToShow={2.2} 
-                            slidesToScroll={1} 
+                            slidesToScroll={1}
+                            trendingData={this.state.trending}
                         />
                     </div>
                 <Footer />
@@ -96,8 +107,4 @@ const mapStateToProps = (state) => {
         posts : state.posts
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-    
-// }
 export default connect(mapStateToProps )(Home);

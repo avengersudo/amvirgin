@@ -10,6 +10,7 @@ const TopPics = props => {
             slidesToShow: props.slidesToShow,
             slidesToScroll: props.slidesToScroll
           };
+          let topPicsData = props.topPicsData;
         return(
             <div className="container section2">
                 <div className="row titlesec">
@@ -18,103 +19,22 @@ const TopPics = props => {
                 </div>
                 <div className="slider22">
                     <Slider {...settings}>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster7.jpg" className="image" alt="" />	
-                                <div className="middle">
-                                    <div className="imgslider"><img src="img/play.png" alt="play" /></div>
-                                </div> 
-                            </div>	
-                            <div className="infomovie">
-                                <h3>Black Panther</h3>
-                                <h5>Movies</h5>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster1.jpg" className="image"  alt=""/>	
-                                <div className="middle">
-                                    <div className="imgslider"><img src="img/play.png" alt="play" /></div>
-                                </div> 
-                            </div>
-                            <div className="infomovie">
-                                <h3>Thor</h3>
-                                <h5>Movies</h5>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster3.jpg" className="image" alt=""/>
-                                <div className="rentmovie">
-                                    <h5>Price ₹10 </h5>
-                                </div>
-                                <div className="middle">
-                                    <div className="imgslider">
-                                        <img src="img/play.png" alt="play"/>
+                        {topPicsData.map((pics,i) => {
+                            return(
+                                <div key={i}>
+                                    <div className="container1">
+                                        <img src={pics.poster} className="image" alt="" />	
+                                        <div className="middle">
+                                            <div className="imgslider"><img src="img/play.png" alt="play" /></div>
+                                        </div> 
+                                    </div>	
+                                    <div className="infomovie">
+                                        <h3>{pics.title}</h3>
+                                        <h5>{pics.type}</h5>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="infomovie">
-                                <h3>Alita</h3>
-                                <h5>Movies</h5>
-                            </div>  	
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster4.jpg" className="image" alt=""/>
-                                <div className="rentmovie">
-                                    <h5>Price ₹10 </h5>
-                                </div>
-                                <div className="middle">
-                                    <div className="imgslider">
-                                        <img src="img/play.png" alt="play" />
-                                    </div>
-                                </div> 
-                            </div>
-                            <div className="infomovie">
-                                <h3>Antman</h3>
-                                <h5>Movies</h5>
-                            </div>    
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster5.jpg" className="image" alt="" />	 
-                                <div className="middle">
-                                    <div className="imgslider"><img src="img/play.png" alt="play" /></div>
-                                </div>
-                            </div>
-                            <div className="infomovie">
-                                <h3>Justice League</h3>
-                                <h5>Movies</h5>
-                            </div>    
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster6.jpg" className="image" alt="" />
-                                <div className="rentmovie">
-                                    <h5>Price ₹10 </h5>
-                                </div>  
-                                <div className="middle">
-                                    <div className="imgslider"><img src="img/play.png" alt="play" /></div>
-                                </div> 	
-                        </div>
-                        <div className="infomovie">
-                                <h3>World War Z</h3>
-                                <h5>Movies</h5>
-                                </div>	
-                        </div>
-                        <div>
-                            <div className="container1">
-                                <img src="img/poster13.jpg" className="image" alt=""/>
-                                <div className="middle">
-                                        <div className="imgslider"><img src="img/play.png" alt="play" /></div>
-                                </div>
-                            </div>
-                            <div className="infomovie">
-                                <h3>Terminator</h3>
-                                <h5>Movies</h5>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </Slider>
                 </div>
             </div>
